@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float lado, A;
+    cout << "Ingrese un lado de su cuadrado: ";
+    cin >> lado;
+    A = lado*lado;
+    cout << "El área de su cuadrado es: " << A << " unidades cuadradas";
+
+    return 0;
+}
