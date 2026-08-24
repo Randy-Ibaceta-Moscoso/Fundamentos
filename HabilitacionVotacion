@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int edad;
+    cout << "===SABER SI UNA PERSONA ESTÁ HABILITADA PARA VOTAR===" << endl;
+    cout << "Introduzca la edad de la persona: "; 
+    cin >> edad;
+    if (edad>=18) {
+        cout << "La persona está habilitada para votar";
+    }
+    else {
+        cout << "La persona no está habilitada para votar";
+    } 
+    return 0;
+}
