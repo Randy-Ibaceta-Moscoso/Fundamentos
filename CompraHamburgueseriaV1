@@ -19,6 +19,11 @@ int main()
     
     if (opcion==0)
         return 0;
+        
+    if (opcion<1||opcion>4){
+        cout << "Opcion no valida.";
+        return 0;
+    }
     
     cout << "¿Cuantas unidades desea?" << endl;
     cin >> cantidad;
