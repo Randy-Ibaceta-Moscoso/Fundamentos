@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float nota1, nota2, nota3, nota4, promedio;
+    
+    cout << "CALCULAR PROMEDIO DADO 4 CALIFICACIONES PARCIALES" << endl;
+    
+    cout << "Introduzca su primer nota (0 a 10 puntos)" << endl;
+    cin >> nota1;
+    
+    if (nota1<0 || nota1>10){
+        cout << "La primer nota es erronea."; 
+        return 0;
+    }
+        
+    
+    cout << "Introduzca su segunda nota (0 a 10 puntos)" << endl;
+    cin >> nota2;
+        if (nota2<0 || nota2>10){
+            cout << "La segunda nota es erronea.";
+            return 0;
+        }
+        
+    cout << "Introduzca su tercer nota (0 a 10 puntos)" << endl;
+    cin >> nota3;
+        if (nota3<0 || nota3>10){
+            cout << "La tercer nota es erronea.";
+            return 0;
+        }   
+    cout << "Introduzca su cuarta nota (0 a 10 puntos)" << endl;
+    cin >> nota4;
+        if (nota4<0 || nota4>10){
+            cout << "La cuarta no es erronea.";
+            return 0;
+        }    
+    promedio = (nota1+nota2+nota3+nota4)/4;
+    
+    if (promedio>=6 && promedio<=10){
+        cout << "El promedio es: "<<promedio<<".    El estudiante ha sido aprobado.";
+        return 0;
+    }
+    if (promedio>=5 && promedio<6){
+        cout << "El promedio es: "<<promedio<<".    El estudiante tiene derecho a extraordinario.";
+        return 0;
+    }
+    if (promedio>=2 && promedio<5){
+        cout << "El promedio es: "<<promedio<<".    El estudiante tiene derecho titulo.";
+        return 0;
+    }
+    if (promedio>=0 && promedio<2){
+        cout << "El promedio es: "<<promedio<<".    El estudiante no tiene derecho a acreditar.";
+        return 0;
+    }
+}
