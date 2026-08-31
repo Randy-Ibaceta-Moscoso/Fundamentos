@@ -13,6 +13,16 @@ int main()
         return 0;
     }
     
+    if (x==0){
+        cout << "El punto se encuentra sobre el eje Y";
+        return 0;
+    }
+    
+    if (y==0){
+        cout << "El punto se encuentra sobre el eje X";
+        return 0;
+    }
+    
     if (x>0 && y>0){
         cout << "El punto se encuentra en el primer cuadrante";
         return 0;
