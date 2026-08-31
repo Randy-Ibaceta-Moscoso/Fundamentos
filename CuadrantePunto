@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float x,y;
+
+    cout << "Escriba una coordenada (x,y) en ese orden en el eje cartesiano:" << endl;
+    cin >> x >> y;
+    
+    if (x==0 && y==0){
+        cout << "El punto se encuentra en el origen";
+        return 0;
+    }
+    
+    if (x>0 && y>0){
+        cout << "El punto se encuentra en el primer cuadrante";
+        return 0;
+    }
+    
+    if (x<0 && y>0){
+        cout << "El punto se encuentra en el segundo cuadrante";
+        return 0;
+    }
+    
+    if (x<0 && y<0){
+        cout << "El punto se encuentra en el tercer cuadrante";
+        return 0;
+    }
+    
+    if (x>0 && y<0){
+        cout << "El punto se encuentra en el cuarto cuadrante";
+        return 0;
+    }
+    
+    return 0;
+}
