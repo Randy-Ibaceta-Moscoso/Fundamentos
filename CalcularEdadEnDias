@@ -1,0 +1,126 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int anion, mesn, dian; //nacimiento
+    int anioa, mesa, diaa; //actual
+    
+    cout<<"introduce tu nacimiento"<<endl;
+    cout<<"año nacimiento: ";
+    cin>>anion;
+    cout<<"mes nacimiento: ";
+    cin>>mesn;
+    cout<<"dia nacimiento: ";
+    cin>>dian;
+    
+    if (mesn<0||mesn>12||dian<0||dian>31||anion<0){
+        cout << "las fecha de nacimiento no es correcta";
+        return 0;
+    }
+    //=============================================================
+    int diamaxn=31;
+    if (mesn==4||mesn==6||mesn==9||mesn==11){
+        diamaxn=30;
+    } 
+    if (mesn==2){
+        if ((anion%4==0 && anion%100!=0)||(anion%400==0)){
+            diamaxn=29;
+        }
+    } else {
+        diamaxn=28;
+    }
+    //=============================================================
+    if (diamaxn<dian){
+        cout << "dia incorrecto";
+        return 0;
+    }
+    //=============================================================
+    cout<<"introduce la fecha actual"<<endl;
+    cout<<"año actual: ";
+    cin>>anioa;
+    cout<<"mes actual: ";
+    cin>>mesa;
+    cout<<"dia actual: ";
+    cin>>diaa;
+    
+    if (mesa<0||mesa>12||diaa<0||diaa>31||anioa<0){
+        cout << "las fecha de nacimiento no es correcta";
+        return 0;
+    }
+    
+    //=============================================================
+    int diamaxa=31;
+    if (mesa==4||mesa==6||mesa==9||mesa==11){
+        diamaxn=30;
+    } 
+    if (mesa==2){
+        if ((anioa%4==0 && anioa%100!=0)||(anioa%400==0)){
+            diamaxa=29;
+        }
+    } else {
+        diamaxa=28;
+    }
+    //=============================================================
+    if (diamaxa<diaa){
+        cout << "dia incorrecto";
+        return 0;
+    }
+    //=============================================================
+    
+    int diasmesesn=0;
+    if (mesn>1) diasmesesn+=31;
+    if (mesn>2) {
+        if ((anioa%4==0 && anioa%100!=0)||(anioa%400==0)){
+            diasmesesn+=29;
+        } else {
+            diasmesesn+=28;
+        }
+    }
+    if (mesn>3) diasmesesn+=31;
+    if (mesn>4) diasmesesn+=30;
+    if (mesn>5) diasmesesn+=31;
+    if (mesn>6) diasmesesn+=30;
+    if (mesn>7) diasmesesn+=31;
+    if (mesn>8) diasmesesn+=31;
+    if (mesn>9) diasmesesn+=30;
+    if (mesn>10) diasmesesn+=31;
+    if (mesn>11) diasmesesn+=30;
+    
+    
+    int diasmesesa = 0;
+    if (mesa > 1)  diasmesesa = diasmesesa + 31;
+    if (mesa > 2) {
+        if ((anioa % 4 == 0 && anioa % 100 != 0) || (anioa % 400 == 0)) {
+            diasmesesa = diasmesesa + 29;
+        } else {
+            diasmesesa = diasmesesa + 28;
+        }
+    }
+    if (mesa > 3)  diasmesesa = diasmesesa + 31;
+    if (mesa > 4)  diasmesesa = diasmesesa + 30;
+    if (mesa > 5)  diasmesesa = diasmesesa + 31;
+    if (mesa > 6)  diasmesesa = diasmesesa + 30;
+    if (mesa > 7)  diasmesesa = diasmesesa + 31;
+    if (mesa > 8)  diasmesesa = diasmesesa + 31;
+    if (mesa > 9)  diasmesesa = diasmesesa + 30;
+    if (mesa > 10) diasmesesa = diasmesesa + 31;
+    if (mesa > 11) diasmesesa = diasmesesa + 30;
+    
+    
+    int bisiestosacumuladosn=((anion-1)/4)-((anion-1)/100)+((anion-1)/400);
+    int diastotalesn=(anion*365)+bisiestosacumuladosn+diasmesesn+dian;
+    
+    int bisiestosacumuladosa=((anioa-1)/4)-((anioa-1)/100)+((anioa-1)/400);
+    int diastotalesa=(anioa*365)+bisiestosacumuladosa+diasmesesa+diaa;
+    
+    int edaddias=diastotalesa-diastotalesn;
+    
+    if(edaddias<0){
+        cout << "nacimiento tiene que ser menor a actual";
+        return 0;
+    }
+    cout << "tu edad en dias es : "<< edaddias;
+    
+    return 0;
+}
