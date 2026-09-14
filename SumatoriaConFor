@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int N, cont, suma=0;
+    
+    cout<<"Ingrese el numero de veces a sumar secuencialmente numeros naturales: ";
+    cin>>N;
+    
+    for (int cont=0; cont <= N; cont++){
+        suma=(cont*(cont+1)/2);
+        cout << "sumando hasta n: " << suma << endl;
+    }
+    
+    return 0;
+}
