@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    
+    int n,numero,menor,mayor,i;
+    float promedio, suma;
+    cout << "Introduzca la cantidad de numeros que desea ingresar: ";
+    cin >> n;
+    
+    if (n<=2){
+        cout << "El numero ingresado debe ser entero positivo y mayor a 2.";
+        return 0;
+    }
+    
+    i = 1;
+    suma = 0;
+    
+    cout << "Introduzca el primer numero: ";
+    cin>>numero;
+    
+    mayor = numero;
+    menor = numero;
+    suma= suma + numero;
+    
+    do {
+        
+        i++;
+        
+        cout<<"Escriba el  siguiente numero: ";
+        cin>>numero;
+        
+        suma= suma + numero;
+        
+        if (numero<=0){
+            cout << "El numero ingresado debe ser entero positivo.";
+            return 0;
+        }
+        
+        if (mayor<numero){
+            mayor = numero;
+        }
+        
+        if (menor>numero){
+            menor = numero;
+        }
+        
+    } while (i<n);
+    
+    promedio = suma/n;
+    
+    cout << "El promedio es: " << promedio << endl;
+    cout << "El mayor es: " << mayor << endl;
+    cout << "El menor es: " << menor << endl;
+    return 0;
+}
