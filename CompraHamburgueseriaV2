@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+int opcionMenu, cantidadPedido, cantidadHamburguesas = 0, cantidadHamburguesasQueso = 0, cantidadPapas = 0, cantidadSodas = 0;
+float precioTotalHamburguesas = 0, precioTotalHamburguesasQueso = 0, precioTotalPapas = 0, precioTotalSodas = 0;
+float parcial = 0, total = 0;
+
+cout<<"MENU "<<endl;
+cout<<"1. Hamburguesa (3bs)"<<endl;
+cout<<"2. Hamburguesa con queso (5bs)"<<endl;
+cout<<"3. Papas fritas (2bs)"<<endl;
+cout<<"4. Soda (2.5bs)"<<endl;
+cout<<"0. Salir"<<endl;
+do {
+	cout<<"Indica la opcion deseada: ";
+	cin>>opcionMenu;
+	if (opcionMenu == 0) {
+		cout<<"Saliendo del menu"<<endl;
+	}
+	else {
+		if (opcionMenu<0||opcionMenu>4)
+			cout<<"La opcion digitada es invalida."<<endl;
+		else {
+			cout<<"Indique la cantidad deseada: ";
+			cin>>cantidadPedido;
+
+			if (cantidadPedido<0) {
+				cout<<"La cantidad ingresada es invalida."<<endl;
+				return 0;
+			}
+
+			if (opcionMenu == 1 )
+				cantidadHamburguesas = cantidadPedido + cantidadHamburguesas;
+			else {
+				if (opcionMenu == 2 )
+					cantidadHamburguesasQueso = cantidadPedido + cantidadHamburguesasQueso;
+				else {
+					if (opcionMenu == 3 )
+						cantidadPapas = cantidadPedido + cantidadPapas;
+					else
+						cantidadSodas = cantidadPedido + cantidadSodas;
+				}
+			}
+
+			switch (opcionMenu) {
+			case (1):
+				precioTotalHamburguesas = 3*cantidadPedido + precioTotalHamburguesas;;
+				break;
+			case (2):
+				precioTotalHamburguesasQueso = 5*cantidadPedido + precioTotalHamburguesasQueso;
+				break;
+			case (3):
+				precioTotalPapas = 2*cantidadPedido + precioTotalPapas;
+				break;
+			case (4):
+				precioTotalSodas = 2.5*cantidadPedido + precioTotalSodas;
+				break;
+			}
+		}
+	}
+} while (opcionMenu != 0);
+    if (opcionMenu != 0) {
+	cout<<"	ITEM					CANTIDAD 		TOTAL PARCIAL"<<endl;
+	cout<<"	Hamburguesas  (3Bs)				"<<cantidadHamburguesas<<"						"<<precioTotalHamburguesas<<endl;
+	cout<<"	Hamburguesas  con queso ( 5Bs)			"<<cantidadHamburguesasQueso<<" 	 					"<<precioTotalHamburguesasQueso<<endl;
+	cout<<"	Papas fritas ( 2Bs)				"<<cantidadPapas<<"						"<<precioTotalPapas<<endl;
+	cout<<"	Soda	(2.5Bs)					"<<cantidadSodas<<"						"<<precioTotalSodas<<endl;
+	cout<<"TOTAL					        "<<cantidadHamburguesas+cantidadHamburguesasQueso+cantidadPapas+cantidadSodas<<"						";
+	cout<<precioTotalHamburguesas+precioTotalHamburguesasQueso+precioTotalPapas+precioTotalSodas<<endl;
+}
+return 0;
+}
