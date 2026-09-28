@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    int n;
+    
+    cout<<"===DETERMINAR SI UN NUMERO ES PRIMO==="<<endl;
+    cout<<"Introduzca un numero N: ";
+    cin>>n;
+
+    if (n>1){
+        for (int i=2; i<n; i++){
+            if (n%i==0){
+                cout<<"No es un numero primo.";
+            }
+        }
+        cout << "Es un numero primo";
+    } else {
+        cout << "Numero invalido";
+    }
+    return 0;
+}
