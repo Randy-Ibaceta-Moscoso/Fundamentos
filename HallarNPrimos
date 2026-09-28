@@ -1,0 +1,29 @@
+// EjemploPrimo.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
+//
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+    int n, i, cont = 2, caux = 1;
+    bool flag=true;
+    
+        cout << "Ingrese la cantidad de primos que quiere generar:";
+        cin >> n;
+
+        while (caux <= n) {
+            flag = true;
+            for (i = 2; i <= sqrt(cont); i++)
+                if (cont % i == 0) {
+                    flag = false;
+                    break;
+                }
+            if (flag == true) {
+                cout << cont << endl;
+                caux++;
+            }
+            cont++;
+        }
+    return 0;
+}
