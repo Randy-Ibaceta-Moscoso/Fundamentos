@@ -1,0 +1,85 @@
+//Autor: Randy Ibaceta Moscoso
+//Fecha: 05/10/2026
+
+#include <iostream>
+using namespace std;
+
+// prototipos
+float cubo(float n);
+int menor(int a, int b);
+int signo(float a );
+
+int main() 
+{
+	float a, b, d, f, Fac;
+	int opcion;
+	//Menu
+	do {
+		//Desplegar opciones
+		cout << "\t\tMenu\n";
+		cout << "\t\t====\n";
+		cout << "1. Calcular el cubo \n";
+		cout << "2. El menor de dos numeros enteros\n";
+		cout << "3. El signo de un numero\n";
+		cout << "0. Salir\n";
+
+		cout << "Opcion: ";
+		cin >> opcion;
+
+		switch (opcion)
+		{
+		case 1:
+			cout << "Ingresar numero: ";
+			cin >> a;
+			cout << "El resultado es: " << cubo(a) << "\n";
+			break;
+		case 2:
+			cout << "Ingresar un numero: ";
+			cin >> a;
+			cout << "Ingresar otro numero: ";
+			cin >> b;
+			cout << "El menor es: " << menor(a, b) << "\n";
+			break;
+		case 3:
+			cout << "Ingresa un numero: ";
+			cin >> a;
+			cout << "Signo es: " << signo(a) << "\n";
+			break;
+		case 0:
+			cout << "Saliendo del programa.";
+			break;
+		default:
+			cout << "Error de opcion, vuelva a intentar.\n";
+			break;
+		} 
+		system("pause");
+		system("cls");
+	} while (opcion != 0);
+}
+
+//Definir funciones
+
+float cubo(float n) {
+	return n * n * n;
+}
+
+int menor(int a, int b) {
+	if (a < b) {
+		return a;
+	}
+	else {
+		return b;
+	}
+}
+
+int signo(float a) {
+	if (a < 0) {
+		return -1;
+	}
+	if (a == 0) {
+		return 0;
+	}
+	if (a > 0) {
+		return 1;
+	}
+}
