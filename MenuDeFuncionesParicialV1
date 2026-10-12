@@ -1,0 +1,157 @@
+#include <iostream>
+using namespace std;
+
+void primerapregunta(int edad, int nota);
+int precios(float x);
+float totalapagar(int cantidad, float precio);
+void menu();
+
+
+int main() {
+	float descuento = 0, peso, precio;
+	int edad, nota, opcion, cantidad;
+
+	do {
+		menu();
+			cin >> opcion;
+
+			switch (opcion) {
+			case 1:
+	                cout << "Ingrese la edad: ";
+					cin >> edad;
+					if (edad <= 0) {
+						do {
+							cout << "Edad invalida. \n";
+							cout << "Nueva edad: ";
+							cin >> edad;
+						} while (edad <= 0);
+					}
+					cout << "Ingrese la nota: ";
+					cin >> nota;
+					if (nota < 0) {
+						do {
+							cout << "Nota invalida. \n";
+							cout << "Nueva nota: ";
+							cin >> nota;
+						} while (nota < 0);
+					}
+					cout << "El estudiante esta: ";
+					primerapregunta(edad, nota);
+				
+				break;
+
+			case 2:
+				cout << "Ingrese el peso: ";
+				cin >> peso;
+				if (peso <= 0) {
+					do {
+						cout << "Peso invalido. \n";
+					    cout << "Nuevo peso: ";
+					    cin >> peso;
+					} while (peso <= 0);
+					
+				}
+				cout << "El precio es: " << precios(peso);
+				break;
+
+			case 3:
+				cout << "Ingrese la cantidad de camisas: ";
+				cin >> cantidad;
+				if (cantidad <= 0) {
+					do {
+						cout << "Cantidad invalida \n";
+						cout << "Nueva cantidad: ";
+						cin >> cantidad;
+					} while (cantidad <= 0);
+				}
+				cout << "Ingrese el precio de las camisas unitario: ";
+				cin >> precio;
+				if (precio <= 0) {
+					do {
+						cout << "Precios invalida \n";
+						cout << "Nuevo precio: ";
+						cin >> precio;
+					} while (precio <= 0);
+				}
+				cout << "El total a pagar es: " << totalapagar(cantidad, precio);
+				break;
+
+			case 0:
+				cout << "Saliendo del programa. ";
+				break;
+
+			default:
+				cout << "Entrada invalida.";
+			}
+
+			cout << "\nDesea volver a iniciar el programa? (1 si, 0 no)\n";
+			cin >> opcion;
+
+			if (opcion == 1) {
+				system("pause");
+				system("cls");
+			}
+	} while (opcion != 0);
+	
+}
+
+
+void menu() {
+	cout << "===Menu de funciones===\n";
+	cout << "1. Primera pregunta\n";
+	cout << "2. Segunda pregunta\n";
+	cout << "3. Tercera pregunta\n";
+	cout << "0. Salir\n";
+	cout << "Opcion: ";
+}
+
+void primerapregunta(int edad, int nota) {
+	if (edad >= 18) {
+		if (nota >= 70)
+			cout << "Aprobado, mayor de edad";
+		else
+			cout << "Reprobado, mayor de edad";
+	}
+	else {
+		if (nota >= 60)
+			cout << "Aprobado, menor de edad";
+		else
+			cout << "Reprobado, menor de edad";
+	} 
+}
+
+int precios(float x) {
+	int precio = 0;
+	if (x > 0 && x <= 2) {
+		return precio = 2;
+	}
+	else {
+		if (x > 2 && x <= 5) {
+			return precio = 25;
+		}
+		else {
+			if (x > 5 && x <= 10) {
+				return precio = 40;
+			}
+			else {
+				if (x > 10) {
+					return precio = 60;
+				}
+			}
+		}
+	}
+}
+
+float totalapagar(int cantidad, float precio) {
+	if (cantidad >= 3) {
+		return (precio * cantidad) * 0.80;
+	}
+	else {
+		if (cantidad >= 1 && cantidad < 3) {
+			return precio * cantidad * 0.80;
+		}
+		else {
+			return 0;
+		}
+	}
+}
