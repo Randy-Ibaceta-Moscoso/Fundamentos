@@ -1,0 +1,91 @@
+#include <iostream>
+#define MAX 100
+using namespace std;
+
+void cargar(int vec[], int n);
+void mostrar(int vec[], int n);
+void burbuja(int vec[], int m);
+
+int main() {
+    int opcion, continuar, tam = 0, A[MAX];
+
+    do {
+        cout << "=== Menu de opciones ===\n";
+        cout << "1. Cargar \n";
+        cout << "2. Mostrar\n";
+        cout << "3. Burbuja\n";
+        cout << "0. Salir \n";
+        cout << "Opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+        case 1:
+            do {
+                cout << "Ingresar el tamano del vector: ";
+                cin >> tam; 
+            } while ((tam <= 0) || (tam > MAX));
+            cargar(A, tam);
+            break; 
+
+        case 2:
+            if (tam == 0) { 
+                cout << "Primero debes cargar el vector.\n";
+            }
+            else {
+                mostrar(A, tam);
+            }
+            break;
+
+        case 3:
+            if (tam == 0) {
+                cout << "Primero debes cargar el vector (Opcion 1).\n";
+            }
+            else {
+                burbuja(A, tam);
+                cout << "-> Vector A clasificado en orden ascendente.\n";
+            }
+            break;
+
+        case 0:
+            cout << "Saliendo del programa...\n";
+            return 0;
+
+        default:
+            cout << "Opción no valida.\n";
+            break;
+        }
+
+        cout << "\n¿Desea regresar al Menu Principal? (1=SI / 0=NO): ";
+        cin >> continuar;
+
+    } while (continuar != 0);
+
+    return 0;
+}
+
+void cargar(int vec[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "Vector[" << i << "]= ";
+        cin >> vec[i];
+    }
+}
+
+void mostrar(int vec[], int n) {
+    cout << "\nVector Resultante\n";
+    for (int i = 0; i < n; i++) {
+        cout << "Vector[" << i << "]= " << vec[i] << endl;
+    }
+}
+
+void burbuja(int vec[], int m) {
+    int aux;
+    for (int i = 0; i < m - 1; i++) {
+        for (int j = 0; j < m - i - 1; j++) {
+            if (vec[j] > vec[j + 1]) {
+                aux = vec[j];
+                vec[j] = vec[j + 1];
+                vec[j + 1] = aux;
+            }
+        }
+    }
+}
