@@ -55,7 +55,7 @@ int main()
 			cout << "Su salario neto final es: " << neto << "Bs" << endl;
 			break;
 		case 0:
-			cout << "Ha salido del menu.\n";
+			cout << "Saliendo.\n";
 			break;
 		default:
 			cout << "Ha ingresado una opcion invalida.\n";
