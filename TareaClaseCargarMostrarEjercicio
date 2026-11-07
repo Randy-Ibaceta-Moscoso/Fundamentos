@@ -18,7 +18,7 @@ int main()
 	int vector[MAX], tamanio;
 	bool comprobante = false;
 	do {
-		cout << "---Menu---\n";
+		cout << "Menu" << endl;
 		cout << "1. Cargar un vector\n";
 		cout << "2. Mostrar el vector cargado\n";
 		cout << "3. Ejercicio 2 del 2do parcial\n";
