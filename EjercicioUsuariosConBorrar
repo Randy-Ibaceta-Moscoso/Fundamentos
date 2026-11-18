@@ -1,0 +1,116 @@
+#include <iostream>
+#include <string>
+const int MAX = 100;
+using namespace std;
+
+struct Usuario {
+    string nombre;
+    string clave;
+};
+
+struct Persona {
+    string nombre;
+    string fecnac;
+    string ci;
+    string direccion;
+    string telefono;
+};
+
+Usuario usuarios[MAX];
+Persona personas[MAX];
+
+int nUsuarios = 0;
+int nPersonas = 0;
+void registrarUsuario();
+void eliminarUsuario();
+bool login();
+
+int main()
+{
+    int opcion;
+    do {
+        cout << "\n Sistema de login \n";
+        cout << "1. Registar usuario\n";
+        cout << "2. Modificar usuario\n";
+        cout << "3. Eliminar usuario\n";
+        cout << "4. Listar usuario\n";
+        cout << "5. Iniciar sesion\n";
+        cout << "0. Salir\n";
+        cin >> opcion;
+        switch (opcion) {
+        case 1: registrarUsuario();
+            break;
+        case 2:
+            break;
+        case 3: eliminarUsuario();
+            break;
+        case 4:
+            break;
+        case 5:
+            if (login())
+                cout << "Llama al menu siguiente\n";
+            break;
+        default:
+            cout << "Error";
+        }
+    } while (opcion != 0);
+}
+
+void registrarUsuario() {
+    string nombre;
+    cout << "\n Registrar usuario \n";
+    cout << "Ingrese Usuario: ";
+    cin >> nombre;
+    for (int i = 0; i < nUsuarios; i++) {
+        if (usuarios[i].nombre == nombre) {
+            cout << "El usuario ya existe \n";
+            return;
+        }
+    }
+
+    usuarios[nUsuarios].nombre = nombre;
+    cout << "Ingrese contraseña: ";
+    cin >> usuarios[nUsuarios].clave;
+    nUsuarios++;
+    cout << "Usuario registrado \n";
+}
+
+void eliminarUsuario() {
+    string nombre;
+    cout << "\n Eliminar usuario \n";
+    cout << "Ingrese el usuario a eliminar: ";
+    cin >> nombre;
+    int pos = -1;
+    for (int i = 0; i < nUsuarios; i++) {
+        if (usuarios[i].nombre == nombre) {
+            pos = i;
+            break;
+        }
+    }
+    if (pos == -1) {
+        cout << "El usuario no existe \n";
+        return;
+    }
+    for (int i = pos; i < nUsuarios - 1; i++) {
+        usuarios[i] = usuarios[i + 1];
+    }
+    nUsuarios--;
+    cout << "Usuario eliminado \n";
+}
+
+bool login() {
+    string nombre, clave;
+    cout << "\n Iniciar sesion \n";
+    cout << "Usuario: ";
+    cin >> nombre;
+    cout << "Contraseña: ";
+    cin >> clave;
+    for (int i = 0; i < nUsuarios; i++) {
+        if ((usuarios[i].nombre == nombre) && (usuarios[i].clave == clave)) {
+            cout << "Bienvenido \n";
+            return true;
+        }
+    }
+    cout << "Usuarios o contraseña incorrecta \n";
+    return false;
+}
