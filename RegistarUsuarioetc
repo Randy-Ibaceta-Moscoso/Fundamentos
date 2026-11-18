@@ -1,0 +1,101 @@
+
+#include <iostream>
+#include <string>
+const int MAX = 100;
+using namespace std;
+
+//Estructuras
+struct Usuario {
+    string nombre;
+    string clave;
+};
+
+struct Persona {
+    string nombre;
+    string fecnac;
+    string ci;
+    string direccion;
+    string telefono;
+};
+
+//Variables globales
+
+//arreglos
+
+Usuario usuarios[MAX];
+Persona personas[MAX];
+
+int nUsuarios = 0;
+int nPersonas = 0;
+void registrarUsuario();
+bool login();
+
+
+int main()
+{
+    int opcion;
+    do {
+        cout << "\n Sistema de login \n";
+        cout << "1. Registar usuario\n";
+        cout << "2. Modificar usuario\n";
+        cout << "3. Eliminar usuario\n";
+        cout << "4. Listar usuario\n";
+        cout << "5. Iniciar sesion\n";
+        cout << "0. Salir\n";
+        cin >> opcion;
+        switch (opcion) {
+        case 1: registrarUsuario();
+            break;
+        case 2:
+            break;
+        case 3: 
+            break;
+        case 4:
+            break;
+        case 5:
+            if (login())
+                cout << "Llama al menu siguiente\n";
+            break;
+        default:
+            cout << "Error";
+        }
+    } while (opcion != 0);
+}
+
+void registrarUsuario() {
+    string nombre;
+    cout << "\n Registrar usuario \n";
+    cout << "Ingrese Usuario";
+    cin >> nombre;
+    // ERROR 
+    for (int i = 0; i < nUsuarios; i++) {
+        if (usuarios[i].nombre == nombre) {
+            cout << "El usuario ya existe \n";
+            return;
+        }
+    }
+
+
+    usuarios[nUsuarios].nombre = nombre;
+    cout << "Ingrese contraseña: ";
+    cin >> usuarios[nUsuarios].clave;
+    nUsuarios++;
+    cout << "Usuario registrado \n";
+}
+
+bool login() {
+    string nombre, clave;
+    cout << "\n Iniciar sesion \n";
+    cout << "Usuario: ";
+    cin >> nombre;
+    cout << "Contraseña: ";
+    cin >> clave;
+    for (int i = 0; i < nUsuarios; i++) {
+        if ((usuarios[i].nombre == nombre) && (usuarios[i].clave == clave)) {
+            cout << "Bienvenido \n";
+            return true;
+        }
+    }
+    cout << "Usuarios o contraseña incorrecta \n";
+    return false;
+}
