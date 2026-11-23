@@ -1,0 +1,183 @@
+#include <iostream>
+#include <string>
+
+const int MAX = 100;
+using namespace std;
+
+struct Usuario {
+    string nombre;
+    string clave;
+};
+
+struct Persona {
+    string nombre;
+    string fecnac;
+    string ci;
+    string direccion;
+    string telefono;
+};
+
+Usuario usuarios[MAX];
+Persona personas[MAX];
+
+int nUsuarios = 0;
+int nPersonas = 0;
+
+void registrarUsuario();
+void modificarUsuario();
+void eliminarUsuario();
+void listarUsuarios();
+bool login();
+
+int main() {
+    int opcion;
+    do {
+        cout << "\n Sistema de login \n";
+        cout << "1. Registrar usuario\n";
+        cout << "2. Modificar usuario\n";
+        cout << "3. Eliminar usuario\n";
+        cout << "4. Listar usuario\n";
+        cout << "5. Iniciar sesion\n";
+        cout << "0. Salir\n";
+        cin >> opcion;
+
+        switch (opcion) {
+        case 1:
+            registrarUsuario();
+            break;
+        case 2:
+            modificarUsuario();
+            break;
+        case 3:
+            eliminarUsuario();
+            break;
+        case 4:
+            listarUsuarios();
+            break;
+        case 5:
+            if (login()) {
+                cout << "Llama al menu siguiente\n";
+            }
+            break;
+        case 0:
+            cout << "Saliendo del sistema...\n";
+            break;
+        default:
+            cout << "Error\n";
+        }
+    } while (opcion != 0);
+
+    return 0;
+}
+
+void registrarUsuario() {
+    string nombreBuscado;
+    cout << "\n Registrar usuario \n";
+    cout << "Ingrese Usuario: ";
+    cin >> nombreBuscado;
+
+    for (int indice = 0; indice < nUsuarios; indice++) {
+        if (usuarios[indice].nombre == nombreBuscado) {
+            cout << "El usuario ya existe \n";
+            return;
+        }
+    }
+
+    if (nUsuarios >= MAX) {
+        cout << "Limite de usuarios alcanzado \n";
+        return;
+    }
+
+    usuarios[nUsuarios].nombre = nombreBuscado;
+    cout << "Ingrese contraseña: ";
+    cin >> usuarios[nUsuarios].clave;
+    nUsuarios++;
+    cout << "Usuario registrado \n";
+}
+
+void modificarUsuario() {
+    string nombreBuscado;
+    string nuevaClave;
+    int indiceEncontrado = -1;
+
+    cout << "\n Modificar usuario \n";
+    cout << "Ingrese el usuario a modificar: ";
+    cin >> nombreBuscado;
+
+    for (int indice = 0; indice < nUsuarios; indice++) {
+        if (usuarios[indice].nombre == nombreBuscado) {
+            indiceEncontrado = indice;
+            break;
+        }
+    }
+
+    if (indiceEncontrado == -1) {
+        cout << "El usuario no existe \n";
+        return;
+    }
+
+    cout << "Ingrese la nueva contraseña: ";
+    cin >> nuevaClave;
+    usuarios[indiceEncontrado].clave = nuevaClave;
+    cout << "Usuario modificado \n";
+}
+
+void eliminarUsuario() {
+    string nombreBuscado;
+    cout << "\n Eliminar usuario \n";
+    cout << "Ingrese el usuario a eliminar: ";
+    cin >> nombreBuscado;
+
+    int indiceEncontrado = -1;
+    for (int indice = 0; indice < nUsuarios; indice++) {
+        if (usuarios[indice].nombre == nombreBuscado) {
+            indiceEncontrado = indice;
+            break;
+        }
+    }
+
+    if (indiceEncontrado == -1) {
+        cout << "El usuario no existe \n";
+        return;
+    }
+
+    for (int indice = indiceEncontrado; indice < nUsuarios - 1; indice++) {
+        usuarios[indice] = usuarios[indice + 1];
+    }
+    nUsuarios--;
+    cout << "Usuario eliminado \n";
+}
+
+void listarUsuarios() {
+    cout << "\n Listar usuarios \n";
+    if (nUsuarios == 0) {
+        cout << "No hay usuarios registrados \n";
+        return;
+    }
+
+    for (int indice = 0; indice < nUsuarios; indice++) {
+        cout << (indice + 1) << ". Usuario: " << usuarios[indice].nombre
+            << " | Contraseña: " << usuarios[indice].clave << "\n";
+    }
+}
+
+bool login() {
+    string nombreIngresado;
+    string claveIngresada;
+
+    cout << "\n Iniciar sesion \n";
+    cout << "Usuario: ";
+    cin >> nombreIngresado;
+    cout << "Contraseña: ";
+    cin >> claveIngresada;
+
+    for (int indice = 0; indice < nUsuarios; indice++) {
+        if ((usuarios[indice].nombre == nombreIngresado) && (usuarios[indice].clave == claveIngresada)) {
+            cout << "Bienvenido \n";
+            return true;
+        }
+    }
+
+    cout << "Usuario o contraseña incorrecta \n";
+    return false;
+}
